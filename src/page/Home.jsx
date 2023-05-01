@@ -2,11 +2,21 @@ import React from "react"
 import RegisterTimeline from "../components/timeline"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faYoutube, faInstagram } from "@fortawesome/free-brands-svg-icons"
-// import Navbar from "../components/navbar"
+import { Helmet } from "react-helmet"
 
 export default function Home() {
   return (
     <>
+      <Helmet>
+        <meta name="title" content="PPDB SMKN 1 Maja" />
+        <meta name="description" content="Selamat datang di Penerimaan Peserta Didik Baru Sekolah Menengah Kejuruan Negeri 1 Maja, Majalengka, Jawa Barat" />
+        <meta name="keywords" content="ppdb, ppdb2023, jabar, ppdb jabar, majalengka, smkn1maja, smk, smkppdb, ppdb smk" />
+        <meta name="robots" content="index, follow" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="language" content="Indonesian" />
+        <meta name="author" content="Billal Fauzan" />
+
+      </Helmet>
       <div className="flex justify-center mt-5">
         <div className="card shadow w-9/12 lg:w-3/4">
           <div className="card-body">
