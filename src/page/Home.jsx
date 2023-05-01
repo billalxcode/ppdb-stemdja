@@ -7,24 +7,23 @@ import { faYoutube, faInstagram } from "@fortawesome/free-brands-svg-icons"
 export default function Home() {
   return (
     <>
-      {/* <Navbar></Navbar> */}
-      <div className="flex justify-center mt-3">
-        <div className="card shadow w-2/3 m-2">
+      <div className="flex justify-center mt-5">
+        <div className="card shadow w-9/12 lg:w-3/4">
           <div className="card-body">
             <h4 className="font-bold">Selamat datang di PPDB SMKN 1 Maja</h4>
             <p>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Est, eos! Iure explicabo molestias iusto distinctio deserunt perspiciatis corporis minus necessitatibus at maiores. Labore nam deleniti totam sint quae distinctio aperiam.
             </p>
 
-            <div className="flex relative pt-4">
-              <a href="/daftar" className="btn btn-primary mx-1">Daftar</a>
-              <button className="btn btn-success text-white mx-1">Download Brosur</button>
+            <div className="flex relative pt-4 flex-col lg:flex-row">
+              <a href="/daftar" className="btn btn-primary mx-1 btn-md w-full my-1 lg:w-max">Daftar</a>
+              <button className="btn btn-success text-white mx-1 btn-md w-full my-1 lg:w-max">Download Brosur</button>
             </div>
           </div>
         </div>
       </div>
-      <div className="flex justify-center mt-2">
-        <div className="card shadow w-2/3 m-2">
+      <div className="flex justify-center mt-5">
+        <div className="card shadow w-9/12 lg:w-3/4">
           <div className="card-body">
             <h1 className="font-bold">Alur Pendaftaran</h1>
 
@@ -33,8 +32,8 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="flex justify-center mt-3">
-        <div className="card shadow w-2/3 m-2">
+      <div className="flex justify-center mt-5">
+        <div className="card shadow w-9/12 lg:w-3/4">
           <div className="card-body">
             <div className="flex">
               <div className="justify-center flex flex-grow">
