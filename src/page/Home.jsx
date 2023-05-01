@@ -3,6 +3,7 @@ import RegisterTimeline from "../components/timeline"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faYoutube, faInstagram } from "@fortawesome/free-brands-svg-icons"
 import SEO from "../components/seo"
+import Requirements from "../components/requirements"
 
 export default function Home() {
   return (
@@ -38,6 +39,16 @@ export default function Home() {
       <div className="flex justify-center mt-5">
         <div className="card shadow w-9/12 lg:w-3/4">
           <div className="card-body">
+            <h1 className="font-bold">Apa saja persyaratan yang harus dilengkapi??</h1>
+
+            <Requirements></Requirements>
+          </div>
+        </div>
+      </div>
+
+      <div className="flex justify-center mt-5">
+        <div className="card shadow w-9/12 lg:w-3/4">
+          <div className="card-body">
             <h1 className="font-bold">Berita Terbaru</h1>
             
             <p className="text-center">
@@ -65,7 +76,7 @@ export default function Home() {
             <div className="flex">
               <div className="justify-center flex flex-grow">
                 <p className="text-center">
-                  &copy; 2023 <a href="https://github.com/billalxcode" className="text-primary">Billal Fauzan</a>
+                  &copy; 2023 <a href="https://github.com/billalxcode" className="text-primary dark:text-white">Billal Fauzan</a>
                 </p>
               </div>
               <div className="justify-end flex flex-row text-2xl">
@@ -74,7 +85,6 @@ export default function Home() {
                 <a href="https://instagram.com/stemdja_production" className="px-1"><FontAwesomeIcon icon={ faInstagram }></FontAwesomeIcon></a>
               </div>
             </div>
-
           </div>
         </div>
       </div>

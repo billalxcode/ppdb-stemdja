@@ -1,16 +1,32 @@
 export default function RegisterTimeline() {
     const timelines = [
         {
-            date: '15 Juni 2023',
+            date: '7-11 Juni 2023',
             title: 'Pendaftaran Tahap 1',
             description: 'Siswa baru mendaftar dengan jalur Daring',
             link: '/cara-daftar'
         },
         {
-            date: '25 Juni 2023',
+            date: '14-16 Juni 2023',
             title: 'Verifikasi dan Validasi',
             description: 'Data siswa akan diverififikasi dan divalidasi berdasarkan data dapodik',
             link: null
+        },
+        {
+            date: '17 Juni 2023',
+            title: "Penetapan",
+            description: 'Rapat Dewan Guru',
+            link: null
+        },
+        {
+            date: '18 Juni 2023',
+            title: 'Koordinasi Satdik & Cadisdik',
+            description: 'Sekolah akan melakukan kordinasi kepada pihak Satdik dan Cadisdik'
+        },
+        {
+            date: '22-24 Juni 2023',
+            title: 'Daftar Ulang',
+            description: 'Siswa yang selesai seleksi diharapkan segera daftar ulang secara offline atau datang langsung ke sekolah dengan membawa berkas.'
         },
         {
             date: '1 Juli 2023',
