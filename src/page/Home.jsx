@@ -29,13 +29,13 @@ export default function Home() {
   }
 
   useEffect(() => {
-    const process = async () => {
+    const beritaProcess = async () => {
       let databerita = await getAllBerita()
       let response = databerita.data.data
       setBerita(response)
     }
     
-    process()
+    beritaProcess()
   }, [setBerita])
   return (
     <>
@@ -96,9 +96,9 @@ export default function Home() {
           <div className="card-body">
             <h1 className="font-bold">Berita Terbaru</h1>
             
-            { berita.map((data) => {
+            { berita.length > 0 ? berita.map((data) => {
               return <Berita judul={data.judul} konten={data.konten} created_at={data.created_at} slug={data.slug}></Berita>
-            })}
+            }) : <p className="text-center">Belum ada berita</p>}
           </div>
         </div>
       </div>
