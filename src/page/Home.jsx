@@ -9,9 +9,14 @@ import Berita from "../components/berita"
 import Swal from "sweetalert2"
 import withReactContent from "sweetalert2-react-content"
 import { Link } from "react-router-dom"
+import packageJson from '../../package.json'
 
 export default function Home() {
   let [ berita, setBerita ] = useState([])
+
+  const getAppVersion = () => {
+    return packageJson.version
+  }
 
   const showModal = (event) => {
     const MySwal = withReactContent(Swal)
@@ -102,6 +107,9 @@ export default function Home() {
         <div className="card shadow w-9/12 lg:w-3/4">
           <div className="card-body">
             <div className="flex">
+              <div className="justify-start text-sm">
+                App version: { getAppVersion() }
+              </div>
               <div className="justify-center flex flex-grow">
                 <p className="text-center">
                   &copy; 2023 <a href="https://github.com/billalxcode" className="text-primary dark:text-white">Billal Fauzan</a>
