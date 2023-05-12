@@ -1,9 +1,9 @@
 export default function RegisterTimeline() {
     const timelines = [
         {
-            date: '7-11 Juni 2023',
+            date: '06-10 Juni 2023',
             title: 'Pendaftaran Tahap 1',
-            description: 'Siswa baru mendaftar dengan jalur Daring',
+            description: 'Siswa baru mendaftar dengan jalur Daring dan Luring',
             link: '/cara-daftar'
         },
         {
@@ -29,7 +29,7 @@ export default function RegisterTimeline() {
             description: 'Siswa yang selesai seleksi diharapkan segera daftar ulang secara offline atau datang langsung ke sekolah dengan membawa berkas.'
         },
         {
-            date: '1 Juli 2023',
+            date: '26-30 Juli 2023',
             title: 'Pendaftaran Tahap 2',
             description: 'Siswa baru mendaftar dengan jalur Daring',
             link: '/cara-daftar'
