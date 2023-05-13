@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useCallback, useEffect, useState } from "react"
 import SEO from "../../components/seo"
 import authLogin from "../../service/auth"
 import { Link } from "react-router-dom"
@@ -44,11 +44,11 @@ export default function Login() {
         event.preventDefault()
     }
 
-    useEffect(() => {
-        let user = getSession('user')
-        if (user !== undefined) {
-            let user_json = JSON.parse(user)
-            if (Object.keys(user_json).includes('access_token') && Object.keys(user_json).includes('expires_in')) {
+    const checklogged = useCallback(() => {
+        let userdata_session = getSession('user')
+        if (userdata_session !== undefined) {
+            let userdata_json = JSON.parse(userdata_session)
+            if (userdata_json !== null && Object.keys(userdata_json).includes('access_token') && Object.keys(userdata_json).includes('expires_in')) {
                 setLogged(true)
                 setAlertMessage({
                     message: <span>You are already logged</span>,
@@ -59,6 +59,10 @@ export default function Login() {
             }
         }
     }, [])
+
+    useEffect(() => {
+        checklogged()
+    }, [checklogged])
     return (
         <>
             <SEO></SEO>
@@ -89,7 +93,7 @@ export default function Login() {
                                 </label>
                                 <input type="password" placeholder="Enter your password" className="input input-bordered w-full" value={password} onChange={(e) => setPassword(e.target.value)} disabled={logged} />
                             </div>
-                            <button className="btn btn-primary w-full my-2" onClick={submit}>Submit</button>
+                            <button className="btn btn-primary w-full my-2" onClick={submit} disabled={logged}>Submit</button>
                         </form>
                     </div>
                 </div>

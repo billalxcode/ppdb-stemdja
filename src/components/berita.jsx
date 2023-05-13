@@ -1,13 +1,13 @@
 import { Link } from "react-router-dom"
 
-export default function Berita({ judul, konten, created_at, slug }) {
+export default function Berita({ judul, konten, created_at, slug, index }) {
     const parseDate = (date) => {
         return new Date(date).toDateString()
         // return date
     }
 
     return (
-        <div className="card shadow" key={slug}>
+        <div className="card shadow transform transition duration-500 hover:scale-105" key={index}>
             <div className="card-body">
                 <div className="flex justify-between">
                     <Link to={'/baca/' + slug}><h1 className="font-bold text-sm">{ judul }</h1></Link>

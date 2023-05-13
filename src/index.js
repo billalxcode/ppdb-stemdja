@@ -5,7 +5,7 @@ import Home from './page/Home';
 import reportWebVitals from './reportWebVitals';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Login from './page/auth/Login';
-import Berita from './page/dashboard/Berita';
+import Dashboard from './page/dashboard/Dashboard';
 
 const router = createBrowserRouter([
   {
@@ -18,7 +18,7 @@ const router = createBrowserRouter([
   },
   {
     path: '/dashboard',
-    element: <Berita></Berita>
+    element: <Dashboard></Dashboard>
   }
 ])
 
