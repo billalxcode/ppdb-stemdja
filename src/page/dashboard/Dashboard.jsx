@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from "react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faYoutube, faInstagram } from "@fortawesome/free-brands-svg-icons"
-import { getAllBerita } from "../../service/berita"
+import { createBerita, getAllBerita } from "../../service/berita"
 import Berita from "../../components/berita"
 import Swal from "sweetalert2"
 import withReactContent from "sweetalert2-react-content"
@@ -10,9 +10,16 @@ import packageJson from '../../../package.json'
 import { getSession } from "../../service/session"
 
 export default function Dashboard() {
-    let [berita, setBerita] = useState([])  
+    let [berita, setBerita] = useState([])
+    let [showModalBerita, setShowModalBerita] = useState(false)
+    let [beritaJudul, setBeritaJudul] = useState('')
+    let [beritaKonten, setBeritaKonten] = useState('')
+    let [accessToken, setAccessToken] = useState('')
+    let [alertBeritaMessage, setAlertBeritaMessage] = useState({
+
+    })
     const navigate = useNavigate()
-    
+
     const getAppVersion = () => {
         return packageJson.version
     }
@@ -27,19 +34,42 @@ export default function Dashboard() {
         })
     }
 
+    
     const beritaProcess = useCallback(async () => {
         let databerita = await getAllBerita()
         let response = databerita.data.data
         setBerita(response)
     }, [])
 
+    const submitBerita = useCallback(async (event) => {
+        let response = await createBerita(beritaJudul, beritaKonten, accessToken)
+        if (response.data.error === true) {
+            setAlertBeritaMessage({
+                message: response.data.message,
+                type: 'alert-error'
+            })
+        } else {
+            setAlertBeritaMessage({
+                message: 'sukses membuat berita',
+                type: 'alert-success'
+            })
+            setBeritaJudul('')
+            setBeritaKonten('')
+            beritaProcess()
+        }
+        event.preventDefault()
+    }, [beritaJudul, beritaKonten, accessToken, beritaProcess])
+
     const checklogged = useCallback(async () => {
         let userdata_session = getSession('user')
         let userdata_json = JSON.parse(userdata_session)
         if (userdata_json === null) {
             navigate('/login')
+        } else if (Object.keys(userdata_json).includes('access_token')) {
+            let access_token = userdata_json['access_token']
+            setAccessToken(access_token)
         }
-    }, [navigate])
+    }, [navigate, setAccessToken])
 
     useEffect(() => {
         beritaProcess()
@@ -90,7 +120,7 @@ export default function Dashboard() {
                             return <Berita judul={data.judul} konten={data.konten} created_at={data.created_at} slug={data.slug} index={index}></Berita>
                         }) : <p className="text-center">Belum ada berita</p>}
 
-                        <button className="btn btn-primary w-full" onClick={showModal}>Create new</button>
+                        <button className="btn btn-primary w-full" onClick={(e) => setShowModalBerita(true)}>Create new</button>
                     </div>
                 </div>
             </div>
@@ -113,6 +143,36 @@ export default function Dashboard() {
                                 <a href="https://instagram.com/stemdja_production" className="px-1"><FontAwesomeIcon icon={faInstagram}></FontAwesomeIcon></a>
                             </div>
                         </div>
+                    </div>
+                </div>
+            </div>
+
+            {/* <input type="checkbox" id="my-modal-6" className="modal-toggle" /> */}
+            <div className={ "modal modal-bottom sm:modal-middle " + (showModalBerita ? 'modal-open' : '')}>
+                <div className="modal-box">
+                    <h3 className="font-bold text-lg">Buat berita baru!</h3>
+                    <form className="py-4">
+                        { Object.keys(alertBeritaMessage).length > 0 ? 
+                            <div className={"alert " + alertBeritaMessage.type}>
+                                { alertBeritaMessage.message }
+                            </div>
+                        : ''}
+                        <div className="modal-control-w-full my-2">
+                            <label htmlFor="judul" className="label">
+                                <span className="label-text">Judul:</span>
+                            </label>
+                            <input type="text" name="judul" id="judul" className="input input-bordered w-full" onChange={(e) => setBeritaJudul(e.target.value)} value={beritaJudul} />
+                        </div>
+                        <div className="modal-control-w-full my-2">
+                            <label htmlFor="konten" className="label">
+                                <span className="label-text">Konten:</span>
+                            </label>
+                            <textarea type="text" name="judul" id="judul" className="textarea textarea-bordered w-full" onChange={(e) => setBeritaKonten(e.target.value)} value={beritaKonten}/>
+                        </div>
+                    </form>
+                    <div className="modal-action">
+                        <button className="btn btn-primary" onClick={submitBerita}>Save</button>
+                        <button className="btn btn-ghost" onClick={(e) => setShowModalBerita(false)}>Close</button>
                     </div>
                 </div>
             </div>

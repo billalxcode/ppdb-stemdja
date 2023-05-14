@@ -17,4 +17,18 @@ const getAllBerita = () => {
     })
 }
 
-export { getAllBerita }
+const createBerita = (judul, konten, access_token) => {
+    console.log(access_token)
+    return axios.post(base_url, {
+        "judul": judul,
+        "konten": konten
+    }, {
+        headers: {
+            "Accept": "application/json",
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${access_token}`
+        }
+    })
+}
+
+export { getAllBerita, createBerita }

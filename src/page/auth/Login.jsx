@@ -60,6 +60,11 @@ export default function Login() {
         }
     }, [])
 
+    const processLogout = useCallback((event) => {
+        removeSession('user')
+        event.preventDefault()
+    }, [])
+
     useEffect(() => {
         checklogged()
     }, [checklogged])
@@ -94,6 +99,11 @@ export default function Login() {
                                 <input type="password" placeholder="Enter your password" className="input input-bordered w-full" value={password} onChange={(e) => setPassword(e.target.value)} disabled={logged} />
                             </div>
                             <button className="btn btn-primary w-full my-2" onClick={submit} disabled={logged}>Submit</button>
+                            { logged ? 
+                                <button className="btn btn-error w-full my-2" onClick={processLogout}>
+                                    Logout
+                                </button>
+                            : ''}
                         </form>
                     </div>
                 </div>
