@@ -1,9 +1,13 @@
 import { useCallback, useState } from "react"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
+import { deleteBerita } from "../service/berita"
 
-export default function Berita({ judul, konten, created_at, slug, index }) {
+export default function Berita({ judul, konten, created_at, slug, index, access_token }) {
+    const navigate = useNavigate()
+
     let [showModalBerita, setShowModalBerita] = useState(false)
-
+    let [alertBeritaMessage, setAlertBeritaMessage] = useState({})
+    
     const parseDate = (date) => {
         return new Date(date).toDateString()
         // return date
@@ -13,9 +17,15 @@ export default function Berita({ judul, konten, created_at, slug, index }) {
         setShowModalBerita(true)
     }, [setShowModalBerita])
 
-    const submitDeleteBerita = useCallback(() => {
-        console.log("Delete beria on slug " + slug)
-    }, [slug])
+    const submitDeleteBerita = useCallback(async () => {
+        const response = await deleteBerita(slug, access_token)
+        let alertStatus = (response.data.error ? 'alert-error' : 'alert-success')
+        setAlertBeritaMessage({
+            message: response.data.message,
+            type: alertStatus
+        })
+        navigate(0)
+    }, [slug, access_token, navigate])
 
     return (
         <>
@@ -34,7 +44,12 @@ export default function Berita({ judul, konten, created_at, slug, index }) {
             <div className={ "modal modal-bottom sm:modal-middle " + (showModalBerita ? 'modal-open' : '')}>
                 <div className="modal-box">
                     <h3 className="font-bold text-lg">Delete Berita {slug}!</h3>
-                    
+                    { Object.keys(alertBeritaMessage).length > 0 ? 
+                            <div className={"alert " + alertBeritaMessage.type}>
+                                { alertBeritaMessage.message }
+                            </div>
+                        : ''}
+
                     <div className="modal-action">
                         <button className="btn btn-error" onClick={submitDeleteBerita}>Delete</button>
                         <button className="btn btn-ghost" onClick={(e) => setShowModalBerita(false)}>Close</button>

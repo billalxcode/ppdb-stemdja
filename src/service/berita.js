@@ -18,7 +18,6 @@ const getAllBerita = () => {
 }
 
 const createBerita = (judul, konten, access_token) => {
-    console.log(access_token)
     return axios.post(base_url, {
         "judul": judul,
         "konten": konten
@@ -31,4 +30,14 @@ const createBerita = (judul, konten, access_token) => {
     })
 }
 
-export { getAllBerita, createBerita }
+const deleteBerita = (slug, access_token) => {
+    return axios.delete(base_url + `/${slug}/delete`, {
+        headers: {
+            "Accept": "application/json",
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${access_token}`
+        }
+    })
+}
+
+export { getAllBerita, createBerita, deleteBerita }

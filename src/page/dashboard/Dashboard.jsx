@@ -117,7 +117,7 @@ export default function Dashboard() {
                         </div> */}
 
                         {berita.length > 0 ? berita.map((data, index) => {
-                            return <Berita judul={data.judul} konten={data.konten} created_at={data.created_at} slug={data.slug} index={index}></Berita>
+                            return <Berita judul={data.judul} konten={data.konten} created_at={data.created_at} slug={data.slug} index={index} access_token={accessToken}></Berita>
                         }) : <p className="text-center">Belum ada berita</p>}
 
                         <button className="btn btn-primary w-full" onClick={(e) => setShowModalBerita(true)}>Create new</button>
