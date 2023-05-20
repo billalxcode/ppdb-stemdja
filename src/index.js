@@ -6,7 +6,6 @@ import reportWebVitals from './reportWebVitals';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Login from './page/auth/Login';
 import Dashboard from './page/dashboard/Dashboard';
-// import Hubungi from './page/hubungi/Hubungi';
 
 const router = createBrowserRouter([
   {
@@ -21,10 +20,6 @@ const router = createBrowserRouter([
     path: '/dashboard',
     element: <Dashboard></Dashboard>
   },
-  // {
-  //   path: "/hubungi",
-  //   element: <Hubungi></Hubungi>
-  // }
 ])
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
