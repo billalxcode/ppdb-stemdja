@@ -94,43 +94,43 @@ export default function Home() {
           <div className="card-body">
             <h1 className="font-bold">Hubungi</h1>
 
-            <div className="flex flex-row px-5">
-              <div className="card shadow transform transition duration-500 hover:scale-105 w-1/3 mx-2">
+            <div className="flex flex-col lg:flex-row px-2">
+              <div className="card shadow transform transition duration-500 hover:scale-105 lg:w-1/3 mx-2">
                 <div className="card-body">
                   <div className="flex justify-center">
                     <h1 className="font-semibold text-center">Agus Mulyana</h1>
 
                   </div>
                   <div className="my-4">
-                    <button className="btn w-full btn-success" onClick={(e) => { handleOpenWhatsapp('6281395564844') }}>
+                    <button className="btn w-full btn-success text-white" onClick={(e) => { handleOpenWhatsapp('6281395564844') }}>
                       Hubungi via Whatsaap
                     </button>
                   </div>
                 </div>
               </div>
 
-              <div className="card shadow transform transition duration-500 hover:scale-105 w-1/3 mx-2">
+              <div className="card shadow transform transition duration-500 hover:scale-105 lg:w-1/3 mx-2">
                 <div className="card-body">
                   <div className="flex justify-center">
                     <h1 className="font-semibold text-center">Yanto Bendi</h1>
 
                   </div>
                   <div className="my-4">
-                    <button className="btn w-full btn-success" onClick={(e) => { handleOpenWhatsapp('6281324047610') }}>
+                    <button className="btn w-full btn-success text-white" onClick={(e) => { handleOpenWhatsapp('6281324047610') }}>
                       Hubungi via Whatsaap
                     </button>
                   </div>
                 </div>
               </div>
 
-              <div className="card shadow transform transition duration-500 hover:scale-105 w-1/3 mx-2">
+              <div className="card shadow transform transition duration-500 hover:scale-105 lg:w-1/3 mx-2">
                 <div className="card-body">
                   <div className="flex justify-center">
                     <h1 className="font-semibold text-center">Dendi Juliansyah</h1>
 
                   </div>
                   <div className="my-4">
-                    <button className="btn w-full btn-success" onClick={(e) => { handleOpenWhatsapp('6285294173692') }}>
+                    <button className="btn w-full btn-success text-white" onClick={(e) => { handleOpenWhatsapp('6285294173692') }}>
                       Hubungi via Whatsaap
                     </button>
                   </div>
